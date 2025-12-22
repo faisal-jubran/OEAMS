@@ -59,6 +59,40 @@
 		?>
 
 
+		<!--  start Showing the data -->
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Student Name</th>
+				<th>Phone Number</th>
+				<th>Actions</th>
+			</tr>
+
+			<?php
+				$sql_select_students = $conn->prepare("SELECT * FROM STUDENT");
+				$sql_select_students->execute();
+				$students_data = $sql_select_students->get_result();
+				while($student = $students_data->fetch_assoc()){
+					// echo "item &nbsp&nbsp " . $row['price'] . "&nbsp&nbsp " . $row['comment'] . "<br>";
+					$student_full_name = $student["FIRST_NAME"]. " " . $student["MIDDLE_NAMES"] . " " . $student["LAST_NAME"];
+					echo "<tr>";
+						echo "<td>" . $student["STUDENT_ID"] . "</td>";
+						echo "<td>" . $student_full_name . "</td>";
+						echo "<td>" . $student["PHONE_NUMBER"] . "</td>";
+						echo "<td>
+							<button>Edit</button>
+							<button>Delete</button>
+						</td>";
+					echo "<tr/>";
+				}
+
+			?>
+				<!-- <td>Green</td>
+				<td>Green</td>
+				<td>Green</td>
+				<td>Green</td> -->
+			<!-- </tr> -->
+		</table>
 
 <script src="bootstrap.js"></script>
 <script src="script.js"></script>

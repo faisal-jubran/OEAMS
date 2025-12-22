@@ -3,6 +3,7 @@
 }
 body {
 	background-color: #c8c2e8;
+	padding: 20px;
 }
 
 .pop-up-form {
@@ -40,3 +41,15 @@ body {
 .shown-pop-up {
 	transform: translate(-50%, -50%) scale(1);
 }
+
+table, td, th {
+	border: 2px solid #58037a;
+	padding: 20px;
+	text-align: center;
+}
+
+table {
+	margin-top: 20px;
+	width: 100%;
+}
+
