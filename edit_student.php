@@ -8,7 +8,6 @@
 </head>
 <body>
 <?php
-	echo $_SERVER["REQUEST_METHOD"];
 
 	if (!isset($_GET['id'])) die("You Must Specify A Student");
 
@@ -31,7 +30,6 @@
 		$student_last_name = $student["LAST_NAME"];
 		$student_phone_number = $student["PHONE_NUMBER"];
 		
-		echo $student_first_name;
 		echo "
 
 			<form class='pop-up-form' method='POST' action='./edit_student.php?id=$id'>
@@ -76,5 +74,3 @@
 ?>
 </body>
 </html>
-
-
