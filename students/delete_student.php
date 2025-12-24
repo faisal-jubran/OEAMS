@@ -1,6 +1,6 @@
 <!-- <title>Delete Student</title> -->
 <?php
-	include("utilities.php");
+	include("../utilities/utilities.php");
 	if(!isset($_GET['id'])){
 		header("Location: ./students.php");
 	}

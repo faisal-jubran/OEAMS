@@ -1,5 +1,5 @@
 <?php
-	include("utilities.php");
+	include("../utilities/utilities.php");
 	$id = $_GET['id'];
 	if(isset($id)){
 		echo "<div class='w-75 mx-auto'>";
