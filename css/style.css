@@ -20,7 +20,8 @@ body {
 	transition: 0.1s ease-in;
 }
 
-.pop-up-form input {
+.pop-up-form input,
+.pop-up-form .form-select {
 	margin-bottom: 20px;
 	padding: 10px 20px;
 }
