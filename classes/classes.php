@@ -115,7 +115,7 @@
 						echo "<td>" . "($class[TERM_ID]) " . substr($class["TERM_START"], 0, 10) . " / " . substr($class["TERM_END"], 0, 10) . "</td>";
 						echo "<td>" . "$class[FIRST_NAME] $class[LAST_NAME]" . "</td>";
 						echo "<td>
-							<a href='./edit_course.php?id=$class[CLASS_ID]'><button class='btn btn-secondary'>Edit</button></a>
+							<a href='./edit_class.php?id=$class[CLASS_ID]'><button class='btn btn-secondary'>Edit</button></a>
 						</td>";
 					echo "<tr/>";
 				}
