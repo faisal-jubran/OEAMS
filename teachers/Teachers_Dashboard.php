@@ -1,9 +1,9 @@
 <?php
 include('../utilities/utilities.php');
-/*if (!isset($_SESSION['TEACHER_ID'])) {
+if (!isset($_SESSION['TEACHER_ID'])) {
     die("Access denied");
-}*/
-$teacher_id=2; //$_SESSION['TEACHER_ID'];
+}
+$teacher_id=$_SESSION['TEACHER_ID'];
 //بروفايل المعلم
 $stmt=$conn->prepare('SELECT FIRST_NAME,MIDDLE_NAMES,LAST_NAME,PHONE_NUMBER FROM teacher WHERE TEACHER_ID=?');
 $stmt->bind_param("i",$teacher_id);
