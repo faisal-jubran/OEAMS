@@ -4,7 +4,7 @@ if (!isset($_SESSION['TEACHER_ID'])) {
     die("Access denied");
 }
 $teacher_id=$_SESSION['TEACHER_ID'];
-//بروفايل المعلم
+
 $stmt=$conn->prepare('SELECT FIRST_NAME,MIDDLE_NAMES,LAST_NAME,PHONE_NUMBER FROM teacher WHERE TEACHER_ID=?');
 $stmt->bind_param("i",$teacher_id);
 $stmt->execute();
@@ -12,7 +12,6 @@ $stmt->execute();
 $result=$stmt->get_result();
 $teacher=$result->fetch_assoc();
 
-//كلاسات التي يدرسها المعلم 
 $stmt2=$conn->prepare('SELECT 
     CLASS.CLASS_ID,
     COURSE.COURSE_NAME,
@@ -23,23 +22,17 @@ JOIN COURSE
     ON CLASS.COURSE_ID = COURSE.COURSE_ID
 JOIN TERM
     ON CLASS.TERM_ID = TERM.TERM_ID
-WHERE CLASS.TEACHER_ID = ?;
-');
+WHERE CLASS.TEACHER_ID = ?;');
 $stmt2->bind_param("i", $teacher_id);
 $stmt2->execute();
 $classes = $stmt2->get_result();
 ?>
-<!DOCTYPE html>
-<html lang="ar">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Teacher Dashboard</title>
 </head>
 <body>
 
-<h1>Teacher Dashboard</h1>
-
-<!-- بروفايل المعلم -->
 <section>
     <h2>Teacher Profile</h2>
 
@@ -56,7 +49,6 @@ $classes = $stmt2->get_result();
 
 <hr>
 
-<!-- الكلاسات -->
 <section>
     <h2>My Classes</h2>
 
@@ -82,7 +74,6 @@ $classes = $stmt2->get_result();
     <?php endif; ?>
 
 </section>
-  <!--الاعدادات-->
 <button id="openSettingsMenu">Settings Menu</button>
 <div id="settingsMenu" style="display:none;">
     <button id="btnAccount">Account Info</button><br>
@@ -125,11 +116,11 @@ $classes = $stmt2->get_result();
 }
 document.getElementById('btnAccount').onclick = function() {
     document.getElementById('accountSection').style.display = 'block';
-    document.getElementById('passwordSection').style.display = 'none'; // إخفاء قسم الباسوورد
+    document.getElementById('passwordSection').style.display = 'none'; 
 }
 document.getElementById('btnPassword').onclick = function() {
     document.getElementById('passwordSection').style.display = 'block';
-    document.getElementById('accountSection').style.display = 'none'; // إخفاء قسم الحساب
+    document.getElementById('accountSection').style.display = 'none'; 
 }
 document.getElementById('logoutBtn').onclick = function() {
     window.location.href = "logout.php";
@@ -141,8 +132,9 @@ document.getElementById('saveAccount').onclick = function() {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "update_account.php", true);
     xhr.onload = function() {
-        alert(xhr.responseText);
-    };
+    alert(xhr.responseText);
+    location.reload(); 
+};
     xhr.send(formData);
 }
 document.getElementById('changePassword').onclick = function() {
